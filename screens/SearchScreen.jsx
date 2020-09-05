@@ -1,28 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import SearchInput from "../components/SearchInput";
-import yelp from "../api/yelp";
+import useResults from "../Hooks/useResults";
 
 const SearchScreen = () => {
   const [term, setTerm] = useState("");
-  const [result, setResult] = useState([]);
-  const [error, setError] = useState("");
-  
-  const onTermSubmit = async () => {
-    try {
-      const response = await yelp.get("/search", {
-        params: {
-          term,
-          location: "New York",
-          limit: 50
-        }
-      });
-      setResult(response.data.businesses);
-    } catch (err) {
-      setError("Some thing went wrong");
-    }
-    
-  };
+  const [result, error, onTermSubmit] = useResults();
   
   return (
     <View>
@@ -31,7 +14,7 @@ const SearchScreen = () => {
         onTermSubmit={onTermSubmit}
         term={term}
       />
-      {error && <Text>{error}</Text>}
+      {error ? <Text>{error}</Text> : null}
       <Text>You have {result.length} results.</Text>
     </View>
   );
