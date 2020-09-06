@@ -6,12 +6,11 @@ import useResults from "../Hooks/useResults";
 const SearchScreen = () => {
   const [term, setTerm] = useState("");
   const [result, error, onTermSubmit] = useResults();
-  
   return (
     <View>
       <SearchInput
         onTermChange={setTerm}
-        onTermSubmit={onTermSubmit}
+        onTermSubmit={() => onTermSubmit(term)}
         term={term}
       />
       {error ? <Text>{error}</Text> : null}
