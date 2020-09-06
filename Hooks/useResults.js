@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import yelp from "../api/yelp";
 
-export default (searchTerm) => {
+export default () => {
   const [result, setResult] = useState([]);
   const [error, setError] = useState("");
   
-  const onTermSubmit = async () => {
+  const onTermSubmit = async (searchTerm) => {
     try {
       const response = await yelp.get("/search", {
         params: {
