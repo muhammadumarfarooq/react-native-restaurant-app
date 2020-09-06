@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import yelp from "../api/yelp";
 
 export default () => {
-  const [result, setResult] = useState([]);
+  const [results, setResults] = useState([]);
   const [error, setError] = useState("");
   
   const onTermSubmit = async (searchTerm) => {
@@ -14,13 +14,13 @@ export default () => {
           limit: 50
         }
       });
-      setResult(response.data.businesses);
+      setResults(response.data.businesses);
     } catch (err) {
       setError("Something went wrong!");
     }
     
   };
   
-  return [result, error, onTermSubmit];
+  return [results, error, onTermSubmit];
   
 }
