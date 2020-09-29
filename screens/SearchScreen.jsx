@@ -9,6 +9,7 @@ const SearchScreen = () => {
   const [results, error, onTermSubmit] = useResults();
   
   const filterResultsByPrice = (price) => {
+    // price === "$" || "$$" || "$$$"
     return results.filter(result => result.price === price);
   };
   
