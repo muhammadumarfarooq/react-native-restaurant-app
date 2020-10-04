@@ -1,44 +1,45 @@
 import React from 'react';
 import { Feather } from "@expo/vector-icons";
-import { StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet } from "react-native";
+import styled from 'styled-components/native';
 
+const StyledViewContainer = styled.View`
+  background-color: #979797;
+  margin: 10px 15px 0 15px;
+  flex-direction: row;
+  height: 50px;
+  border-radius: 5px;
+`;
+
+const StyledTextInput = styled.TextInput`
+  flex: 1;
+  font-size: 18px;
+`;
 
 const SearchInput = ({ onTermChange, onTermSubmit, term }) => {
+  const { iconStyle } = style;
   return (
-    <View style={style.backgroundStyle}>
-      <Feather name="search" style={style.iconStyle}/>
-      <TextInput
+    <StyledViewContainer>
+      <Feather name="search" style={iconStyle}/>
+      <StyledTextInput
         autoCapitalize="none"
         autoCorrect={false}
-        style={style.inputStyle}
         placeholder="Search"
         value={term}
         onChangeText={onTermChange}
         onEndEditing={onTermSubmit}
       />
-    </View>
+    </StyledViewContainer>
   );
 };
 
 
 const style = StyleSheet.create({
-  backgroundStyle: {
-    marginTop: 10,
-    height: 50,
-    backgroundColor: "#ffbb91",
-    borderRadius: 5,
-    marginHorizontal: 15,
-    flexDirection: "row"
-  },
   iconStyle: {
     fontSize: 25,
     marginHorizontal: 8,
     alignSelf: "center",
   },
-  inputStyle: {
-    fontSize: 18,
-    flex: 1
-  }
 });
 
 export default SearchInput;
