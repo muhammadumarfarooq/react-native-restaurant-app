@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import yelp from "../api/yelp";
 
 export default () => {
@@ -20,6 +20,10 @@ export default () => {
     }
     
   };
+  
+  useEffect(() => {
+    onTermSubmit('pasta');
+  }, []);
   
   return [results, error, onTermSubmit];
   
