@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 
 const StyledViewContainer = styled.View`
   background-color: #979797;
-  margin: 10px 15px 0 15px;
+  margin: 10px 15px 10px 15px;
   flex-direction: row;
   height: 50px;
   border-radius: 5px;
